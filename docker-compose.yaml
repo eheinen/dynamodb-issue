@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    ports:
+      - 8000:8000
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      AWS_DYNAMODB_ENDPOINT: http://dynamodb:8000/
